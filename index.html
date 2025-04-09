@@ -4,15 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alex Chen - System Developer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --primary: #333333;
       --secondary: #555555;
-      --accent: #707070;
+      --accent: #4A6FA5;
       --light-gray: #f8fafc;
       --dark: #1e293b;
       --text-gray: #64748b;
       --border-color: #e2e8f0;
+      --icon-color: #4A6FA5;
     }
     
     body {
@@ -91,12 +93,16 @@
     .contact-item {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 8px;
       background-color: var(--light-gray);
-      padding: 5px 12px;
+      padding: 8px 16px;
       border-radius: 20px;
       font-size: 0.9rem;
       transition: all 0.3s ease;
+    }
+    
+    .contact-item i {
+      color: var(--icon-color);
     }
     
     .contact-item:hover {
@@ -144,13 +150,13 @@
       left: 0;
       width: 60px;
       height: 3px;
-      background-color: #333;
+      background-color: var(--accent);
     }
     
     .section-title i {
       margin-right: 10px;
       font-size: 1.5rem;
-      color: var(--accent);
+      color: var(--icon-color);
     }
     
     .section-title h2 {
@@ -177,11 +183,19 @@
       border: 1px solid var(--border-color);
     }
     
+    .skill-tag i {
+      color: var(--icon-color);
+    }
+    
     .skill-tag:hover {
-      background-color: #333;
+      background-color: var(--accent);
       color: white;
       transform: translateY(-2px);
-      border-color: #333;
+      border-color: var(--accent);
+    }
+    
+    .skill-tag:hover i {
+      color: white;
     }
     
     .experience-item {
@@ -203,7 +217,7 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background-color: #333;
+      background-color: var(--accent);
     }
     
     .timeline-header {
@@ -290,7 +304,7 @@
     .btn {
       display: inline-block;
       padding: 12px 30px;
-      background-color: #333;
+      background-color: var(--accent);
       color: white;
       border-radius: 30px;
       text-decoration: none;
@@ -301,7 +315,7 @@
     }
     
     .btn:hover {
-      background-color: #555;
+      background-color: #3a5a80;
       transform: translateY(-2px);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
@@ -330,16 +344,17 @@
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
-      color: var(--dark);
+      color: var(--icon-color);
       text-decoration: none;
       border: 1px solid var(--border-color);
+      font-size: 1.2rem;
     }
     
     .social-link:hover {
-      background-color: #333;
+      background-color: var(--accent);
       color: white;
       transform: translateY(-3px);
-      border-color: #333;
+      border-color: var(--accent);
     }
     
     @media (max-width: 768px) {
@@ -371,16 +386,16 @@
           <p class="tagline">Building robust, scalable systems and architecting elegant solutions</p>
           <div class="contact-info">
             <div class="contact-item">
-              <i>📧</i> alex.chen@example.com
+              <i class="fas fa-envelope"></i> alex.chen@example.com
             </div>
             <div class="contact-item">
-              <i>📱</i> (555) 123-4567
+              <i class="fas fa-mobile-alt"></i> (555) 123-4567
             </div>
             <div class="contact-item">
-              <i>📍</i> San Francisco, CA
+              <i class="fas fa-map-marker-alt"></i> San Francisco, CA
             </div>
             <div class="contact-item">
-              <i>💻</i> github.com/alexchen
+              <i class="fab fa-github"></i> github.com/alexchen
             </div>
           </div>
         </div>
@@ -394,7 +409,7 @@
   <main class="container">
     <section class="card">
       <div class="section-title">
-        <i>💡</i>
+        <i class="fas fa-lightbulb"></i>
         <h2>About Me</h2>
       </div>
       <p>I'm a passionate system developer with 7+ years of experience designing and implementing enterprise-level software solutions. I specialize in distributed systems, cloud architecture, and developing high-performance applications that scale. My approach combines technical expertise with strategic thinking to solve complex problems while ensuring maintainable, future-proof code.</p>
@@ -402,31 +417,31 @@
 
     <section class="card">
       <div class="section-title">
-        <i>🛠️</i>
+        <i class="fas fa-tools"></i>
         <h2>Technical Skills</h2>
       </div>
       <div class="skills-container">
-        <div class="skill-tag"><i>•</i> Java/Spring Boot</div>
-        <div class="skill-tag"><i>•</i> Python</div>
-        <div class="skill-tag"><i>•</i> Golang</div>
-        <div class="skill-tag"><i>•</i> Kubernetes</div>
-        <div class="skill-tag"><i>•</i> Docker</div>
-        <div class="skill-tag"><i>•</i> AWS/Azure</div>
-        <div class="skill-tag"><i>•</i> Microservices</div>
-        <div class="skill-tag"><i>•</i> RESTful APIs</div>
-        <div class="skill-tag"><i>•</i> gRPC</div>
-        <div class="skill-tag"><i>•</i> PostgreSQL/MySQL</div>
-        <div class="skill-tag"><i>•</i> MongoDB</div>
-        <div class="skill-tag"><i>•</i> Redis</div>
-        <div class="skill-tag"><i>•</i> Kafka</div>
-        <div class="skill-tag"><i>•</i> CI/CD</div>
-        <div class="skill-tag"><i>•</i> Terraform</div>
+        <div class="skill-tag"><i class="fab fa-java"></i> Java/Spring Boot</div>
+        <div class="skill-tag"><i class="fab fa-python"></i> Python</div>
+        <div class="skill-tag"><i class="fab fa-golang"></i> Golang</div>
+        <div class="skill-tag"><i class="fas fa-dharmachakra"></i> Kubernetes</div>
+        <div class="skill-tag"><i class="fab fa-docker"></i> Docker</div>
+        <div class="skill-tag"><i class="fab fa-aws"></i> AWS/Azure</div>
+        <div class="skill-tag"><i class="fas fa-network-wired"></i> Microservices</div>
+        <div class="skill-tag"><i class="fas fa-exchange-alt"></i> RESTful APIs</div>
+        <div class="skill-tag"><i class="fas fa-project-diagram"></i> gRPC</div>
+        <div class="skill-tag"><i class="fas fa-database"></i> PostgreSQL/MySQL</div>
+        <div class="skill-tag"><i class="fas fa-leaf"></i> MongoDB</div>
+        <div class="skill-tag"><i class="fas fa-server"></i> Redis</div>
+        <div class="skill-tag"><i class="fas fa-stream"></i> Kafka</div>
+        <div class="skill-tag"><i class="fas fa-code-branch"></i> CI/CD</div>
+        <div class="skill-tag"><i class="fas fa-globe"></i> Terraform</div>
       </div>
     </section>
 
     <section class="card">
       <div class="section-title">
-        <i>🧪</i>
+        <i class="fas fa-flask"></i>
         <h2>Key Projects</h2>
       </div>
       <div class="projects-grid">
@@ -482,7 +497,7 @@
 
     <section class="card">
       <div class="section-title">
-        <i>💼</i>
+        <i class="fas fa-briefcase"></i>
         <h2>Professional Experience</h2>
       </div>
       
@@ -516,7 +531,7 @@
     
     <section class="card">
       <div class="section-title">
-        <i>🎓</i>
+        <i class="fas fa-graduation-cap"></i>
         <h2>Education & Certifications</h2>
       </div>
       
@@ -551,10 +566,10 @@
   <footer>
     <div class="container">
       <div class="social-links">
-        <a href="#" class="social-link">in</a>
-        <a href="#" class="social-link">gh</a>
-        <a href="#" class="social-link">tw</a>
-        <a href="#" class="social-link">m</a>
+        <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link" title="Medium"><i class="fab fa-medium-m"></i></a>
       </div>
       <p>© 2025 Alex Chen. All rights reserved.</p>
     </div>
