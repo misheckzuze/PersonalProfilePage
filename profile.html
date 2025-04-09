@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Chen - System Developer</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --secondary: #1e40af;
+      --light: #f1f5f9;
+      --dark: #1e293b;
+      --accent: #3b82f6;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 40px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.05) 10px,
+        transparent 10px,
+        transparent 20px
+      );
+      z-index: 1;
+    }
+    
+    .header-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .profile-details {
+      flex: 2;
+    }
+    
+    .profile-image {
+      flex: 1;
+      text-align: center;
+      max-width: 250px;
+    }
+    
+    .profile-image img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      object-fit: cover;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin: 0 0 10px 0;
+      font-weight: 700;
+    }
+    
+    .highlight {
+      color: #bfdbfe;
+      font-weight: 300;
+    }
+    
+    .tagline {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+    
+    .contact-info {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background-color: rgba(255, 255, 255, 0.15);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-item:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+    }
+    
+    main {
+      padding: 40px 0;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 25px;
+      margin-bottom: 30px;
+    }
+    
+    .section-title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+    
+    .section-title i {
+      margin-right: 10px;
+      font-size: 1.5rem;
+    }
+    
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .skill-tag {
+      background-color: var(--light);
+      color: var(--primary);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.3s ease;
+    }
+    
+    .skill-tag:hover {
+      background-color: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    .experience-item {
+      margin-bottom: 25px;
+      position: relative;
+      padding-left: 20px;
+      border-left: 2px solid var(--light);
+    }
+    
+    .experience-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .experience-item::before {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: 0;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--primary);
+    }
+    
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+    
+    .company {
+      font-weight: bold;
+    }
+    
+    .date {
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+    
+    .position {
+      color: var(--primary);
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    
+    .project-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .project-image {
+      height: 150px;
+      background-color: #dbeafe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .project-content {
+      padding: 15px;
+    }
+    
+    .project-title {
+      font-weight: 600;
+      margin: 0 0 5px 0;
+      color: var(--dark);
+    }
+    
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 10px;
+    }
+    
+    .project-tag {
+      background-color: #e2e8f0;
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    
+    .cta {
+      text-align: center;
+      padding: 40px 0;
+      background-color: var(--light);
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn:hover {
+      background-color: var(--secondary);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+      background-color: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      
+      .profile-image {
+        margin-bottom: 20px;
+      }
+      
+      .contact-info {
+        justify-content: center;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="profile-details">
+          <h1>Alex Chen <span class="highlight">System Developer</span></h1>
+          <p class="tagline">Building robust, scalable systems and architecting elegant solutions</p>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i>📧</i> alex.chen@example.com
+            </div>
+            <div class="contact-item">
+              <i>📱</i> (555) 123-4567
+            </div>
+            <div class="contact-item">
+              <i>📍</i> San Francisco, CA
+            </div>
+            <div class="contact-item">
+              <i>💻</i> github.com/alexchen
+            </div>
+          </div>
+        </div>
+        <div class="profile-image">
+          <img src="/api/placeholder/400/400" alt="Alex Chen">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="section-title">
+        <i>💡</i>
+        <h2>About Me</h2>
+      </div>
+      <p>I'm a passionate system developer with 7+ years of experience designing and implementing enterprise-level software solutions. I specialize in distributed systems, cloud architecture, and developing high-performance applications that scale. My approach combines technical expertise with strategic thinking to solve complex problems while ensuring maintainable, future-proof code.</p>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <i>🛠️</i>
+        <h2>Technical Skills</h2>
+      </div>
+      <div class="skills-container">
+        <div class="skill-tag"><i>🔸</i> Java/Spring Boot</div>
+        <div class="skill-tag"><i>🔸</i> Python</div>
+        <div class="skill-tag"><i>🔸</i> Golang</div>
+        <div class="skill-tag"><i>🔸</i> Kubernetes</div>
+        <div class="skill-tag"><i>🔸</i> Docker</div>
+        <div class="skill-tag"><i>🔸</i> AWS/Azure</div>
+        <div class="skill-tag"><i>🔸</i> Microservices</div>
+        <div class="skill-tag"><i>🔸</i> RESTful APIs</div>
+        <div class="skill-tag"><i>🔸</i> gRPC</div>
+        <div class="skill-tag"><i>🔸</i> PostgreSQL/MySQL</div>
+        <div class="skill-tag"><i>🔸</i> MongoDB</div>
+        <div class="skill-tag"><i>🔸</i> Redis</div>
+        <div class="skill-tag"><i>🔸</i> Kafka</div>
+        <div class="skill-tag"><i>🔸</i> CI/CD</div>
+        <div class="skill-tag"><i>🔸</i> Terraform</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <i>🧪</i>
+        <h2>Key Projects</h2>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image">
+            <img src="/api/placeholder/300/150" alt="Distributed Data Platform">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Distributed Data Platform</h3>
+            <p>Designed and implemented a scalable data processing platform handling 2TB+ daily with sub-second latency requirements.</p>
+            <div class="project-tags">
+              <span class="project-tag">Kafka</span>
+              <span class="project-tag">Kubernetes</span>
+              <span class="project-tag">Go</span>
+              <span class="project-tag">Prometheus</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image">
+            <img src="/api/placeholder/300/150" alt="Cloud Migration Framework">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Cloud Migration Framework</h3>
+            <p>Led development of an internal framework that reduced on-prem to cloud migration time by 65% for enterprise applications.</p>
+            <div class="project-tags">
+              <span class="project-tag">AWS</span>
+              <span class="project-tag">Terraform</span>
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Docker</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image">
+            <img src="/api/placeholder/300/150" alt="Microservice Orchestration">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Microservice Orchestration</h3>
+            <p>Built a service mesh solution for 50+ microservices, implementing circuit breaking, rate limiting, and observability.</p>
+            <div class="project-tags">
+              <span class="project-tag">Istio</span>
+              <span class="project-tag">gRPC</span>
+              <span class="project-tag">Java</span>
+              <span class="project-tag">Grafana</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <i>💼</i>
+        <h2>Professional Experience</h2>
+      </div>
+      
+      <div class="experience-item">
+        <div class="timeline-header">
+          <div class="company">TechNova Systems</div>
+          <div class="date">2022 - Present</div>
+        </div>
+        <div class="position">Senior System Developer</div>
+        <p>Lead the architecture and development of distributed systems handling millions of daily transactions. Implemented cloud-native solutions that reduced operational costs by 30% while improving system reliability to 99.99% uptime.</p>
+      </div>
+      
+      <div class="experience-item">
+        <div class="timeline-header">
+          <div class="company">DataFlow Solutions</div>
+          <div class="date">2019 - 2022</div>
+        </div>
+        <div class="position">System Developer</div>
+        <p>Designed and implemented scalable backend services for a SaaS platform. Led the migration from monolith to microservices, resulting in 40% faster deployment cycles and improved system resilience.</p>
+      </div>
+      
+      <div class="experience-item">
+        <div class="timeline-header">
+          <div class="company">Innovate Technologies</div>
+          <div class="date">2017 - 2019</div>
+        </div>
+        <div class="position">Software Engineer</div>
+        <p>Developed RESTful APIs and backend services for enterprise clients. Contributed to the adoption of containerization which reduced environment inconsistencies by 90%.</p>
+      </div>
+    </section>
+    
+    <section class="card">
+      <div class="section-title">
+        <i>🎓</i>
+        <h2>Education & Certifications</h2>
+      </div>
+      
+      <div class="experience-item">
+        <div class="timeline-header">
+          <div class="company">Stanford University</div>
+          <div class="date">2013 - 2017</div>
+        </div>
+        <div class="position">BS in Computer Science</div>
+        <p>Focus on Distributed Systems and Software Engineering. Graduated with honors.</p>
+      </div>
+      
+      <div class="experience-item">
+        <div class="timeline-header">
+          <div class="company">Certifications</div>
+          <div class="date"></div>
+        </div>
+        <div class="position"></div>
+        <p>• AWS Certified Solutions Architect - Professional<br>
+        • Certified Kubernetes Administrator (CKA)<br>
+        • Google Professional Cloud Developer</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="cta">
+    <h2>Interested in working together?</h2>
+    <p>I'm currently open to new opportunities and collaborations</p>
+    <a href="#" class="btn">Get In Touch</a>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="social-links">
+        <a href="#" class="social-link">in</a>
+        <a href="#" class="social-link">gh</a>
+        <a href="#" class="social-link">tw</a>
+        <a href="#" class="social-link">m</a>
+      </div>
+      <p>© 2025 Alex Chen. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
